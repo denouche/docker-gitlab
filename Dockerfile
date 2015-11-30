@@ -16,5 +16,5 @@ RUN chmod +x postfix-start.sh
 RUN grep -q postfix-start.sh assets/wrapper || sed -i '/wait/i \
     /postfix-start.sh' assets/wrapper
 
-CMD ["/usr/local/bin/wrapper"]
+CMD ["/assets/wrapper"]
 

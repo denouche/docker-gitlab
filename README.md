@@ -22,3 +22,10 @@ docker run -t \
     denouche/gitlab
 ```
 
+## Based on official Gitlab image
+
+Can be found at https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/docker/Dockerfile
+
+
+
+
