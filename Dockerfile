@@ -10,10 +10,11 @@ RUN apt-get install -y \
     ca-certificates \
     libsasl2-modules
 
-RUN sed -i '/function entrypoint/a \
-    postmap /etc/postfix/sasl_passwd \n\
-    cat /etc/ssl/certs/Thawte_Premium_Server_CA.pem | tee -a /etc/postfix/cacert.pem \n\
-    /etc/init.d/postfix restart' /usr/local/bin/wrapper
+COPY postfix-start.sh /
+RUN chmod +x postfix-start.sh
+
+RUN grep -q postfix-start.sh assets/wrapper || sed -i '/wait/i \
+    /postfix-start.sh' assets/wrapper
 
 CMD ["/usr/local/bin/wrapper"]
 
